@@ -189,6 +189,8 @@ const Header = (props) => {
     }
   `;
 
+  console.log("showInfo,", showInfo);
+
   return (
     <header css={header} className="base-grid">
       <div className={`${active ? "line" : "no-line"}`}></div>
@@ -243,6 +245,7 @@ const Header = (props) => {
             grid-column: 4 / span 2;
             grid-row: 2;
             align-self: center;
+            padding: 0.8em 1.6em;
 
             @media (min-width: 900px) {
               grid-column: 10 / span 2;

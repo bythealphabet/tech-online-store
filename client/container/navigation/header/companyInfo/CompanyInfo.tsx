@@ -128,7 +128,7 @@ export function CompanyInfo({ showInfo, setShowInfo, position }) {
   );
 }
 
-export function CompanyInfoBtn({ setShowInfo }) {
+export function CompanyInfoBtn() {
   const {
     colors: { black },
   } = useTheme();

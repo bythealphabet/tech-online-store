@@ -20,8 +20,9 @@ function SignIn() {
   async function submit(data) {
     try {
       const userData = await onSubmit(signin, data);
-      await signInHandler(userData);
-      await history.push("/");
+      await setTimeout(() => {
+        signInHandler(userData);
+      }, 2000);
     } catch (err) {
       console.log("Sign In Error", err);
     }
@@ -37,7 +38,7 @@ function SignIn() {
   return (
     <main className="base-grid" css={[style]}>
       {success ? (
-        <SubmitSuccess />
+        <SubmitSuccess message={`Welcome Back ${data?.user?.name}`} />
       ) : (
         <AuthFormComponent
           signin
