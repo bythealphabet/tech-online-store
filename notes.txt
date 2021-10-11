@@ -1,0 +1,8 @@
+DEV DEP /////
+
+yarn add --dev @babel/core @babel/plugin-transform-runtime @babel/preset-env babel-loader file-loader nodemon webpack webpack-cli webpack-node-externals @babel/preset-react @emotion/babel-plugin @hot-loader/react-dom webpack-dev-middleware webpack-hot-middleware webpack-node-externals
+
+
+DEP    ////
+
+@emotion/babel-preset-css-prop @emotion/react bcryptjs compression cookie-parser cors dotenv express express-jwt helmet jsonwebtoken mongoose react react-dom react-hot-loader react-router-dom
