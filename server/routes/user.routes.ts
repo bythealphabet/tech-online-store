@@ -12,6 +12,8 @@ router
   .put(auth.requireSignin, auth.hasAuthorization, userCtrl.update)
   .delete(auth.requireSignin, auth.hasAuthorization, userCtrl.remove);
 
+router.route("/api/confirmation").post(userCtrl.confirmation);
+
 router.param("userId", userCtrl.userByID);
 
 export default router;

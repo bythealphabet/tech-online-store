@@ -36,10 +36,10 @@ export default (link, development) => {
 								<a
 									href="http://${
                     development ? "localhost:3000" : "bythealphabet.com"
-                  }/sub-confirmation/${link}"
+                  }/user-auth-confirmation/${link}"
 									>http://${
                     development ? "localhost:3000" : "bythealphabet.com"
-                  }/sub-confirmation/${link}
+                  }/user-auth-confirmation/${link}
 								</a>
 							</td>
 						</tr>
