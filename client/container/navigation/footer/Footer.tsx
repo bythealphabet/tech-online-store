@@ -128,6 +128,7 @@ function Footer() {
       }
     }
   `;
+
   return (
     <footer className="footer" css={footerStyles}>
       <section className="newsletter-signup">
@@ -144,7 +145,7 @@ function Footer() {
         </form>
       </section>
       <section className="footer-nav">
-        <NavBar navList={navList} />
+        <NavBar navList={navList} linkColor={theme.colors.white} />
       </section>
       <section className="payment-method">
         <img src={paymentMethodsImg} alt="" />

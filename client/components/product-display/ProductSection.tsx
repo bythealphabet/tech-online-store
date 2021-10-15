@@ -5,10 +5,16 @@ import ProductCard from "../cards/ProductCard";
 
 function ProductSection({
   banner,
-  label = "Products",
-  productsPath = "new-products/",
-  sectionUrl = "See All Products",
-  productsArray = [],
+  label,
+  productsPath,
+  sectionUrl,
+  productsArray,
+}: {
+  banner?: string;
+  label?: string;
+  productsPath?: string;
+  sectionUrl?: string;
+  productsArray?: {}[];
 }) {
   const [productsState, setProductsState] = useState();
 
@@ -115,7 +121,7 @@ function ProductSection({
     <section className="product-section base-grid" css={style}>
       {banner && <div className="banner">{<img src={banner} alt="" />}</div>}
       <h3 className="products-title">{label}</h3>
-      <Link className="see-products" to={productsPath}>
+      <Link className="see-products" to={productsPath} to="products-id/">
         {sectionUrl}
       </Link>
       <div className="products-carousel">

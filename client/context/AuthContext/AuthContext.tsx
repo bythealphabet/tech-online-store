@@ -1,59 +1,77 @@
-import React, { useState, useEffect, createContext } from "react";
-import { read } from "../../api/api-user";
+import React, { useState, createContext, ReactNode } from "react";
 import authFile from "./auth-helper";
-import { useFetch } from "../../hooks/useFetch";
 
-const { isAuthenticated, updateAuthUser, authenticate, signout } = authFile;
+const { isAuthenticated, authenticate, signout } = authFile;
 
-export const AuthContext = createContext("");
-const { Provider } = AuthContext;
+type AuthContextProps = {
+  auth: boolean | {};
+  signInHandler: Function;
+  signOutHandler: Function;
+};
 
-const AuthProvider = ({ children }) => {
-  const [auth, setAuth] = useState(isAuthenticated);
-  const [categoryName, setCategoryName] = useState("");
+export const AuthContext = createContext<Partial<AuthContextProps>>({});
+
+function AuthProvider({ children }: { children: ReactNode }) {
+  const [auth, setAuth] = useState<
+    boolean | { token: string | boolean; user: {} }
+  >(isAuthenticated);
 
   {
     let value;
     value = {
-      updateUser,
       auth,
       signInHandler,
       signOutHandler,
-      categoryName,
-      setCategoryName,
     };
 
-    return <Provider value={value}>{children}</Provider>;
+    return (
+      <AuthContext.Provider value={value}>{children}</AuthContext.Provider>
+    );
   }
 
   //////////////////////////////////////////////////////////////////////////////////////////////
   //////////////////////////////////////////////////////////////////////////////////////////////
   //////////////////////////////////////////////////////////////////////////////////////////////
 
-  async function updateUser(data) {
-    const { _id, photo, name, email, seller } = data;
-    const userUpdateData = { _id, photo, name, email, seller };
+  // async function updateUser(data: {
+  //   _id: string;
+  //   photo: string;
+  //   name: string;
+  //   email: string;
+  //   seller: boolean;
+  // }) {
+  //   const { _id, photo, name, email, seller } = data;
 
-    await updateAuthUser(userUpdateData);
-    await setAuth((prev) => {
-      prev.user = userUpdateData;
-      return prev;
-    });
+  //   // const userUpdateData: {
+  //   //   _id: string;
+  //   //   photo: string;
+  //   //   name: string;
+  //   //   email: string;
+  //   //   seller: boolean;
+  //   // } = { _id, photo, name, email, seller };
 
-    return;
-  }
+  //   await updateAuthUser(data);
+  //   console.log("data", data);
 
-  async function signInHandler(data) {
-    await setAuth(data);
+  //   await setAuth((prev) => {
+  //     prev.user = data;
+  //     return prev;
+  //   });
+
+  //   return;
+  // }
+
+  async function signInHandler(data: { token: string; user: any }) {
     await authenticate(data);
+    await setAuth(data);
+
     return;
   }
 
-  async function signOutHandler() {
-    await signout();
+  function signOutHandler(): void {
+    signout();
     setAuth(false);
-    return;
   }
-};
+}
 
 export default AuthProvider;

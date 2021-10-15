@@ -17,9 +17,16 @@ function ProductCard({
     width: 234px;
     min-height: 300px;
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    cursor: pointer;
 
     display: flex;
     flex-direction: column;
+    transition: transform 0.3s ease;
+
+    :hover {
+      box-shadow: rgba(0, 0, 0, 0.22) 0px 19px 43px;
+      transform: translate3d(0px, -1px, 0px);
+    }
 
     .stock {
       color: #67925a;
@@ -68,14 +75,12 @@ function ProductCard({
             margin: 0.5em 0;
           `}
         />
-        <p> Reviews (4)</p>
+        <p> Reviews ({reviews.length})</p>
       </div>
-      <p className="description">
-        Ex Display: MSI Pro 16 Flex-036AU 15. MultiTouch all-in-on...
-      </p>
+      <p className="description">{prodDesc}</p>
       <div className="price-box">
-        <p className="old-price"> Naf499.00</p>
-        <p className="price"> Naf399.00</p>
+        <p className="old-price"> Naf{oldPrice}</p>
+        <p className="price">Naf{price}</p>
       </div>
     </div>
   );

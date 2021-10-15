@@ -9,11 +9,14 @@ export const Input = ({
   placeholder = "write here",
   type = "text",
   value,
+
+  labelStyle,
+  placeholderStyle,
 }) => {
   const inputValue = (e) => change(e.target.value);
 
   return (
-    <div css={inputStyles}>
+    <div css={inputStyles(labelStyle, placeholderStyle)}>
       <Label label={label} />
       <input
         id={label}

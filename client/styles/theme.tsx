@@ -1,8 +1,21 @@
 import { jsx, css } from "@emotion/react"; /** @jsx jsx */
-import { colors } from "./colors";
-import { baseTypography, styledTypography } from "./typography";
+import { colors, colorTypes } from "./colors";
+import {
+  baseTypography,
+  styledTypography,
+  typographyTypes,
+} from "./typography";
 import { baseGrid, mobileGrid, desktopGrid } from "./grid";
 import { buttons } from "./buttons";
+
+declare module "@emotion/react" {
+  export interface Theme {
+    buttons: {};
+    typography: typographyTypes;
+    colors: colorTypes;
+    grid: {};
+  }
+}
 
 export const theme = {
   buttons,

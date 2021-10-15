@@ -4,7 +4,15 @@ import NavBar from "./NavBar/NavBar";
 import MobileMenu from "./MobileMenu/MobileMenu";
 import useWindowSize from "../../../../hooks/useWindowSize";
 
-const byTheAlphabet = ({ active, navList, position }) => {
+const byTheAlphabet = ({
+  active,
+  navList,
+  position,
+}: {
+  active: boolean;
+  navList: [];
+  position: string;
+}) => {
   const {
     colors: { white },
   } = useTheme();

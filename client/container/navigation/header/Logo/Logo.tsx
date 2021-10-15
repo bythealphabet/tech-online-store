@@ -2,7 +2,7 @@ import React from "react";
 import { jsx, css, useTheme } from "@emotion/react"; /** @jsx jsx */
 import { Link } from "react-router-dom";
 
-function Logo({ active, position }) {
+function Logo({ active, position }: { active: string; position: any }) {
   const theme = useTheme();
 
   const style = css`

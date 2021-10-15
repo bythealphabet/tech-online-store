@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { jsx, css } from "@emotion/react"; /** @jsx jsx */
-import AuthFormComponent from "../../../components/Form/AuthFormComponent";
-import SubmitSuccess from "../../../components/Form/SubmitSucces/SubmitSuccess";
+import AuthFormComponent from "../../../components/form/AuthFormComponent";
+import SubmitSuccess from "../../../components/form/SubmitSucces/SubmitSuccess";
 import { AuthContext } from "../../../context/AuthContext/AuthContext";
 import { usePost } from "../../../hooks/useFetch";
 import { Link, useHistory, Redirect } from "react-router-dom";

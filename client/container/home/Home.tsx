@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { jsx, css } from "@emotion/react"; /** @jsx jsx */
 import ProductSection from "../../components/product-display/ProductSection";
 import { newProducts, customeProducts, laptops } from "./productTestObj";
-import brand0 from "../../assets/img/brand0.jpg";
+import * as brand0 from "../../assets/img/brand0.jpg";
 import brand1 from "../../assets/img/brand1.jpg";
 import brand2 from "../../assets/img/brand2.jpg";
 import brand3 from "../../assets/img/brand3.jpg";

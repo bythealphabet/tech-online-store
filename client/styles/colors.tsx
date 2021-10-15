@@ -1,4 +1,15 @@
-export const colors = {
+export interface colorTypes {
+  primary: string;
+  secondary: string;
+  accent: string;
+  dark: string;
+  gray: string;
+  light: string;
+  black: string;
+  white: string;
+}
+
+export const colors: colorTypes = {
   primary: "#45A29E",
   secondary: "#1F2833",
   accent: "#66FCF1",

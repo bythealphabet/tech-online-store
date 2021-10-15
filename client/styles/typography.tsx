@@ -1,5 +1,35 @@
 import { jsx, css } from "@emotion/react"; /** @jsx jsx */
 
+export interface typographyTypes {
+  fontSize: number;
+  fontFamily: string;
+  fontWeight: { light: number; regular: number; bold: number };
+  size: {
+    header1: string;
+    header2: string;
+    header3: string;
+    body: string;
+    small: string;
+    mini: string;
+  };
+  lineHeight: {
+    height1: string;
+  };
+  letterSpacing: {
+    spacing1: string;
+    spacing2: string;
+  };
+  title1: string;
+  title2: string;
+  title3: string;
+  subtitle: string;
+  body: string;
+  small: string;
+  preTitle: string;
+  buttonText: string;
+  link: string;
+}
+
 export const baseTypography = {
   fontSize: 16,
   fontFamiliy: "font-family: 'Roboto', sans-serif",
@@ -42,7 +72,7 @@ export const styledTypography = {
     letter-spacing: ${baseTypography.letterSpacing.spacing1};
   `,
   subtitle: css`
-    font-weight: ${baseTypography.fontWeightRegular};
+    font-weight: ${baseTypography.fontWeight.regular};
     font-size: ${baseTypography.size.header3};
   `,
   body: css`

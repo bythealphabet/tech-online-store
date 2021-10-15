@@ -1,13 +1,15 @@
 import { jsx, css } from "@emotion/react"; /** @jsx jsx */
 
-export const inputStyles = css`
+export const inputStyles = (labelStyle, placeholderStyle) => css`
   display: flex;
   flex-direction: column;
 
   margin-bottom: 1em;
 
   .label {
+    font-size: var(--smallSize);
     margin-bottom: 0.25em;
+    ${labelStyle}
   }
 
   .input {
@@ -19,12 +21,12 @@ export const inputStyles = css`
     max-width: 420px;
 
     border-radius: 0.25em;
-    border: solid 0.031em var(--light);
+    border: solid 0.031em var(--dark);
 
-    box-shadow: 0 0 3px rgba(0, 0, 0, 0.6) inset;
+    /* box-shadow: 0 0 3px rgba(0, 0, 0, 0.6) inset; */
 
     margin-bottom: 0.75em;
-    padding: 1em;
+    padding: 0.8em;
 
     transform: scale(1);
     transition: transform 0.25s ease;
@@ -32,6 +34,7 @@ export const inputStyles = css`
 
     ::placeholder {
       color: #c5c6c7;
+      ${placeholderStyle}
     }
 
     :focus {

@@ -1,6 +1,9 @@
 import { useState, useEffect } from "react";
 
-const useWindowSize = (props) => {
+const useWindowSize: {
+  with: number | undefined;
+  height: number | undefined;
+} = () => {
   const isClient = typeof window === "object";
 
   function getSize() {

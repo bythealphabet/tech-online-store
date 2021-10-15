@@ -4,142 +4,63 @@ import Logo from "../Logo/Logo";
 import FacebookIcon from "../../../../components/svgs/FacebookIconSvg";
 import IGIcon from "../../../../components/svgs/IGIcon";
 
-export function CompanyInfo({ showInfo, setShowInfo, position }) {
-  const move = css`
-    transform: translateY(0);
-  `;
-
-  const appear = css`
-    opacity: 1;
-    z-index: 11;
-  `;
-
+export function CompanyInfo() {
   const style = css`
-    z-index: -1;
+    z-index: 100;
+    width: 300px;
     display: grid;
     grid-template-columns: 1em 1fr 1em;
-    grid-template-rows: 1fr 3fr;
+    grid-template-rows: 100px 100px 100px 100px;
+    background-color: var(--white);
 
-    @media (min-width: 900px) {
-      grid-template-columns: 1em 300px 1em;
-      grid-template-rows: 1fr 3fr;
+    .opening-hours,
+    .adress-info,
+    .phone-number {
+      padding: 1em;
+      grid-column: 2 / -2;
     }
 
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
+    .opening-hours {
+      grid-row: 2;
 
-    opacity: 0;
-    transition: opacity 1.5s ease;
-    ${showInfo ? appear : null}
-
-    /* grid-column: 1 / -1; */
-
-    .background {
-      z-index: -1;
-      opacity: 0;
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: linear-gradient(
-        to bottom,
-        rgba(0, 0, 0, 0.8) 0%,
-        rgba(0, 0, 0, 0.3) 50%,
-        rgba(0, 0, 0, 0.8) 100%
-      );
-      background-blend-mode: multiply, multiply;
-
-      ${showInfo ? appear : null}
+      .opening-hours-header {
+        font-size: 1;
+      }
     }
 
-    .content-box-info {
-      z-index: 12;
-      display: grid;
-      grid-template-columns: 1em 1fr 1em;
-      grid-template-rows: 100px 100px 100px 100px;
-      background-color: rgba(255, 255, 255, 0.95);
+    .adress-info {
+      grid-row: 3;
+    }
 
-      grid-column: 2;
-      grid-row: 1;
-
-      @media (min-width: 900px) {
-        /* grid-column: 5; */
-      }
-
-      transform: translateY(-120%);
-      transition: 1.5s ease;
-      ${showInfo ? move : null}
-
-      .opening-hours,
-      .adress-info,
-      .phone-number {
-        padding: 1em;
-        grid-column: 2 / -2;
-      }
-
-      .opening-hours {
-        grid-row: 2;
-
-        .opening-hours-header {
-          font-size: 1;
-        }
-      }
-
-      .adress-info {
-        grid-row: 3;
-      }
-
-      .phone-number {
-        grid-row: 4;
-      }
+    .phone-number {
+      grid-row: 4;
     }
   `;
   return (
-    <div className="company-info" css={style}>
-      <div className="background" onClick={() => setShowInfo(false)}></div>
-      <div className="content-box-info" onMouseLeave={() => setShowInfo(false)}>
-        <Logo
-          active={true}
-          position={css`
-            grid-column: 2;
-            grid-row: 1;
-            align-self: flex-end;
-          `}
-        />
-        <div className="opening-hours">
-          <p className="opening-hours-header">🕘 We are open:</p>
-          <p>Mon-Sat: 9:00 AM - 5:30 Pm</p>
-          <p>Fr: 9:00 AM - 6:00 Pm</p>
-        </div>
-        <div className="adress-info">
-          <p> 📍Caracasbaaiweg #120 </p>
-          <p> 🇨🇼 Curacao Dutch Caribbean </p>
-        </div>
-        <div className="phone-number">
-          <p>Phones:(599) 334-4322 </p>
-          <p> info@rapthetronic </p>
-        </div>
+    <div className="content-box-info" css={style}>
+      <Logo
+        active={true}
+        position={css`
+          grid-column: 2;
+          grid-row: 1;
+          align-self: flex-end;
+        `}
+      />
+      <div className="opening-hours">
+        <p className="opening-hours-header">🕘 We are open:</p>
+        <p>Mon-Sat: 9:00 AM - 5:30 Pm</p>
+        <p>Fr: 9:00 AM - 6:00 Pm</p>
+      </div>
+      <div className="adress-info">
+        <p> 📍Caracasbaaiweg #120 </p>
+        <p> 🇨🇼 Curacao Dutch Caribbean </p>
+      </div>
+      <div className="phone-number">
+        <p>Phones:(599) 334-4322 </p>
+        <p> info@rapthetronic </p>
       </div>
     </div>
   );
-}
-
-export function CompanyInfoBtn() {
-  const {
-    colors: { black },
-  } = useTheme();
-
-  const style = css`
-    z-index: 10;
-    grid-column: 1 / -1;
-    grid-row: 1;
-    background-color: ${black};
-  `;
-  return <div className="base-grid header-info" css={[style]}></div>;
 }
 
 export const SmallInfo = () => {
