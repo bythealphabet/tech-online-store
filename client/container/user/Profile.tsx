@@ -9,7 +9,7 @@ import { usePost } from "../../hooks/useFetch";
 import Avatar from "../../components/avatar/Avatar";
 import useFromData from "../../hooks/useFormData";
 
-function style(active) {
+function style(active: string) {
   const opacity = css`
     opacity: 1;
   `;
@@ -29,6 +29,10 @@ function style(active) {
     .profile-info {
       grid-column: 2 / span 3;
       grid-row: 3;
+
+      > * {
+        margin-bottom: 1em;
+      }
     }
 
     .update {
@@ -41,20 +45,23 @@ function style(active) {
 
 function Profile() {
   const [active, setActive] = useState(false);
+  const [deleteWindowActice, setDeleteWindowActive] = useState(false);
+
+  const deleteWindowHandler = () => setDeleteWindowActive((prev) => !prev);
   const theme = useTheme();
-  const { auth } = useContext(AuthContext);
+  const { auth, updateUser } = useContext(AuthContext);
   const {
     token,
-    user: { email, name },
+    user: { email, name, createdAt, updatedAt },
   } = auth;
   const { userId } = useParams();
 
   const formObj = {
-    name,
-    email,
+    name: "",
+    email: "",
     password: "",
-    subscriber: false,
   };
+
   const [user, inputHandler] = useFromData(formObj);
   const [fetchedData, onSubmit] = usePost();
 
@@ -62,16 +69,23 @@ function Profile() {
     return <Redirect to="/signin" />;
   }
 
-  function submit(e) {
-    e.preventDefault();
+  function cleanObj(obj) {
+    return Object.keys(obj).reduce(
+      (acc, key) => (obj[key] === "" ? acc : { ...acc, [key]: obj[key] }),
+      {}
+    );
+  }
 
-    onSubmit(update, {
-      user,
+  async function submit(e) {
+    e.preventDefault();
+    setActive(false);
+    const data = await onSubmit(update, {
+      user: cleanObj(user),
       token: auth.token,
       userId,
     });
 
-    console.log("fetchData", fetchedData);
+    await updateUser(data);
   }
 
   return (
@@ -80,8 +94,14 @@ function Profile() {
 
       <div className="profile-info">
         <Avatar color={theme.colors.dark} />
-        <p className="profile-name">name: {name}</p>
-        <p className="profile-email">email: {email}</p>
+        <p className="profile-name">Name: {name}</p>
+        <p className="profile-email">Email: {email}</p>
+        <p className="profile-joined">
+          Joined: {new Date(createdAt).toDateString()}
+        </p>
+        <p className="profile-update">
+          Updated Profile: {new Date(updatedAt).toDateString()}
+        </p>
         <button className="base-btn" onClick={() => setActive((prev) => !prev)}>
           {active ? "Cancel Update Profile" : "Update Profile"}
         </button>
@@ -90,6 +110,7 @@ function Profile() {
       {active && (
         <div className="update">
           <EditField
+            deleteAcountHandler={deleteWindowHandler}
             inputHandler={inputHandler}
             onSubmit={submit}
             setActive={setActive}

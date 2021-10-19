@@ -18,7 +18,7 @@ if (development) {
   devBundle.compile(app);
 }
 
-app.use(express.urlencoded({ extended: false })); //<-----------Need to Read About this part of EXPRESS
+app.use(express.urlencoded({ extended: true })); //<-----------Need to Read About this part of EXPRESS
 app.use(express.json()); //<-----------Need to Read About this part of EXPRESS
 app.use(compress());
 app.use(cookieParser());

@@ -45,7 +45,7 @@ function GlobalStyles() {
           --accent: ${accent};
           --white: ${white};
           --dark: ${dark};
-          --gray: ${gray}
+          --gray: ${gray};
           --light: ${light};
           --header1: ${header1};
           --header2: ${header2};
@@ -53,7 +53,6 @@ function GlobalStyles() {
           --bodySize: ${bodySize};
           --smallSize: ${smallSize};
           --link: ${link};
-         
         }
 
         body,
@@ -65,7 +64,6 @@ function GlobalStyles() {
           line-height: 1.6;
           height: 100%;
           width: 100%;
-
         }
 
         // #root {
@@ -85,7 +83,7 @@ function GlobalStyles() {
         }
 
         a {
-         ${link}
+          ${link}
           cursor: pointer;
           color: ${dark};
         }
@@ -103,20 +101,17 @@ function GlobalStyles() {
           font-weight: 300;
         }
 
-        .title-1{
+        .title-1 {
           ${title1}
         }
 
-        .title-2{
+        .title-2 {
           ${title2}
         }
 
+        /////////////* END TYPOGRAPHY *////////////////
 
-       /////////////* END TYPOGRAPHY *//////////////// 
-
-
-
-        .base-btn{
+        .base-btn {
           ${baseBtn}
         }
         .base-grid {

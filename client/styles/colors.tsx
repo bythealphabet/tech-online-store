@@ -14,7 +14,7 @@ export const colors: colorTypes = {
   secondary: "#1F2833",
   accent: "#66FCF1",
   dark: "#0C0B10",
-  gray: "#c5c6c7",
+  gray: "#7a7d80",
   light: "#FAFCFE",
   black: "#020203",
   white: "#F2F2F2",

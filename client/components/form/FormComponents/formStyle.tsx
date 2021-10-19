@@ -38,7 +38,7 @@ export const inputStyles = (labelStyle, placeholderStyle) => css`
     }
 
     :focus {
-      background-color: var(--gray);
+      background-color: var(--light);
       box-shadow: 0 0 3px var(--primary) inset;
       transform: scale(1.02);
     }

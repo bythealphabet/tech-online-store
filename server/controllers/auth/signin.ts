@@ -2,7 +2,10 @@ import User from "../../models/user.model";
 import jwt from "jsonwebtoken";
 import config from "./../../../config/config";
 
-export const signin = async (req, res) => {
+export const signin = async (
+  req: { body: { email: string; password: string } },
+  res: {}
+) => {
   try {
     let user = await User.findOne({ email: req.body.email });
     if (!user) return res.status("401").json({ error: "User not found" });
@@ -13,13 +16,12 @@ export const signin = async (req, res) => {
     }
     const token = jwt.sign({ _id: user._id }, config.jwtSecret);
     res.cookie("t", token, { expire: new Date() + 9999 });
+    user.hashed_password = undefined;
+    user.salt = undefined;
+
     return res.json({
       token,
-      user: {
-        _id: user._id,
-        name: user.name,
-        email: user.email,
-      },
+      user,
     });
   } catch (err) {
     return res.status("401").json({ error: "Could not sign in" });
