@@ -13,6 +13,7 @@ import Profile from "./container/user/Profile";
 import Signup from "./container/user/auth/Signup";
 import Signin from "./container/user/auth/Signin";
 import Confirmation from "./container/user/auth/Confirmation";
+import PrivateRoute from "./container/user/auth/PrivateRoute";
 
 const ScrollToTop = withRouter(scrollToTop);
 
@@ -28,9 +29,9 @@ function MainRouter() {
       <Route exact path="/">
         <Home />
       </Route>
-      <Route path="/user/:userId">
+      <PrivateRoute path="/user/:userId">
         <Profile />
-      </Route>
+      </PrivateRoute>
       <Route path="/signup">
         <Signup />
       </Route>

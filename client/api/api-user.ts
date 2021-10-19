@@ -38,14 +38,14 @@ const read = ({ userId, token }) => {
     .catch((err) => console.log("err:", err));
 };
 
-const update = ({ userId, token, userData }) => {
+const update = ({ userId, token, user }) => {
   return fetch(`/api/users/${userId}`, {
     method: "PUT",
     headers: {
       Accept: "application/json",
       Authorization: `Bearer ${token}`,
     },
-    body: userData,
+    body: JSON.stringify(user),
   })
     .then((response) => {
       return response.json();

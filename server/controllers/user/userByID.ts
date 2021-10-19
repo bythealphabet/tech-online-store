@@ -9,7 +9,6 @@ export const userByID = async (req, res, next, id) => {
       });
     req.profile = user;
 
-    console.log("found the user");
     next();
   } catch (err) {
     return res.status("400").json({

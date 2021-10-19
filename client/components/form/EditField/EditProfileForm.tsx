@@ -2,6 +2,7 @@ import React from "react";
 import { jsx, css } from "@emotion/react"; /** @jsx jsx */
 import { Input } from "../FormComponents/Input";
 import { SubmitBtn } from "../FormComponents/SubmitBtn";
+import useFromData from "../../../hooks/useFormData";
 
 function style() {
   return css`
@@ -19,13 +20,13 @@ function style() {
   `;
 }
 
-function EditField({ name = "lucas", email = "lucas@bythealphabet.com" }) {
+function EditField({ onSubmit, inputHandler }) {
   return (
-    <form css={[style]}>
+    <form css={[style]} onSubmit={onSubmit}>
       <Input
         label="Name"
-        change={() => ""}
-        placeholder={name}
+        change={inputHandler("name")}
+        placeholder=""
         type="text"
         placeholderStyle={css`
           color: var(--dark);
@@ -35,8 +36,8 @@ function EditField({ name = "lucas", email = "lucas@bythealphabet.com" }) {
 
       <Input
         label="Email"
-        change={() => ""}
-        placeholder={email}
+        change={inputHandler("email")}
+        placeholder=""
         type="text"
         placeholderStyle={css`
           color: var(--dark);
@@ -45,17 +46,16 @@ function EditField({ name = "lucas", email = "lucas@bythealphabet.com" }) {
       />
 
       <Input
-        label="Password"
-        change={() => ""}
+        label="Change Password"
+        change={inputHandler("password")}
         placeholder="change password"
         type="password"
         placeholderStyle={css`
-          color: var(--dark);
           font-size: var(--bodySize);
         `}
       />
 
-      <SubmitBtn text="Update Profile" />
+      <SubmitBtn text="Submit" onClick={onSubmit} />
     </form>
   );
 }

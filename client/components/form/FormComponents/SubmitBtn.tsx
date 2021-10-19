@@ -3,7 +3,7 @@ import { jsx, css, useTheme } from "@emotion/react"; /** @jsx jsx */
 
 export function SubmitBtn({
   text = "Submit",
-  submit = () => console.log("Clicked"),
+  onClick = () => "",
   signin = false,
 }) {
   const {
@@ -21,7 +21,7 @@ export function SubmitBtn({
   `;
 
   return (
-    <button className="btn" onClick={submit} css={[base, styles]}>
+    <button className="btn" onClick={onClick} css={[base, styles]}>
       {text}
     </button>
   );

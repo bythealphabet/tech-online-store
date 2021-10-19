@@ -15,7 +15,7 @@ function ThemeContextProvider(props) {
 
   return (
     <ThemeContext.Provider value={{ active, setActive }}>
-      <ThemeProvider theme={toggleTheme}>{props.children}</ThemeProvider>
+      <ThemeProvider theme={theme}>{props.children}</ThemeProvider>
     </ThemeContext.Provider>
   );
 }
