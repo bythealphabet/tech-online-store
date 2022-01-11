@@ -7,15 +7,19 @@ import helmet from "helmet";
 import template from "./template";
 import authRoutes from "./routes/auth.routes";
 import userRoutes from "./routes/user.routes";
+import ghpages from "gh-pages";
 
 import devBundle from "../build-utils/devBundle";
 
 const app = express();
+const CURRENT_WORKING_DIR = process.cwd();
 
 const development = process.env.NODE_ENV === "development";
 if (development) {
   console.log("development mode devBundle active:");
   devBundle.compile(app);
+}else{
+  ghpages.publish(path.join(CURRENT_WORKING_DIR, "dist"))
 }
 
 app.use(express.urlencoded({ extended: true })); //<-----------Need to Read About this part of EXPRESS
@@ -30,7 +34,7 @@ app.use(
 
 app.use(cors());
 
-const CURRENT_WORKING_DIR = process.cwd();
+
 app.use("/dist", express.static(path.join(CURRENT_WORKING_DIR, "dist")));
 
 app.use("/", userRoutes);

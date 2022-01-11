@@ -3,6 +3,8 @@
   "version": "1.0.0",
   "description": "MERNSTACK TEMPLATE WITH NODEJS EXPRESS MONGODB REACT, using webpack5 and Typescript",
   "main": "server/server.ts",
+  "homepage": "https://bythealphabet.github.io/tech-online-store/",
+  "repository":"https://github.com/bythealphabet/tech-online-store.git" ,
   "scripts": {
     "clean": "rimraf ./dist",
     "update": "npm run clean && ",
@@ -41,6 +43,7 @@
     "babel-loader": "^8.2.2",
     "file-loader": "^6.2.0",
     "fork-ts-checker-webpack-plugin": "^6.3.4",
+    "gh-pages": "^3.2.3",
     "nodemon": "^2.0.13",
     "rimraf": "^3.0.2",
     "ts-loader": "^9.2.6",

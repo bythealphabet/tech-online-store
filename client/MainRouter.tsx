@@ -29,7 +29,7 @@ function MainRouter() {
         <Home />
       </Route>
       <PrivateRoute path="/user/:userId">
-        {/* <Profile /> */}
+        <Profile />
       </PrivateRoute>
       <Route path="/signup">
         <Signup />
