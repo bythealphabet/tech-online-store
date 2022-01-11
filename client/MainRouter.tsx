@@ -9,7 +9,6 @@ import Footer from "./container/navigation/footer/Footer";
 import Home from "./container/home/Home";
 
 //USER
-import Profile from "./container/user/Profile";
 import Signup from "./container/user/auth/Signup";
 import Signin from "./container/user/auth/Signin";
 import Confirmation from "./container/user/auth/Confirmation";
@@ -30,7 +29,7 @@ function MainRouter() {
         <Home />
       </Route>
       <PrivateRoute path="/user/:userId">
-        <Profile />
+        {/* <Profile /> */}
       </PrivateRoute>
       <Route path="/signup">
         <Signup />

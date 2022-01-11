@@ -1,7 +1,7 @@
 const path = require("path");
 const webpack = require("webpack");
 const CURRENT_WORKING_DIR = process.cwd();
-const ForkTsCheckerWebpackPlugin = require("fork-ts-checker-webpack-plugin");
+// const ForkTsCheckerWebpackPlugin = require("fork-ts-checker-webpack-plugin");
 
 const config = {
   name: "browser",
