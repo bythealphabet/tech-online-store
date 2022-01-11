@@ -57,5 +57,5 @@ typings/
 # dotenv environment variables file
 .env
 
-# webpack default dist folder
-dist/
+# # webpack default dist folder
+# dist/
